@@ -1,4 +1,5 @@
 import pygame
+from constants import WHITE
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
@@ -15,7 +16,7 @@ class CircleShape(pygame.sprite.Sprite):
 
     def draw(self, screen):
         # sub-classes must override
-        pass
+        pygame.draw.polygon(screen, WHITE, self.triangle(), 2)
 
     def update(self, dt):
         # sub-classes must override
