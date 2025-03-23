@@ -1,6 +1,6 @@
 import pygame
 from constants import *
-from player import Player
+from player import *
 
 def main():
     #initialize pygame
@@ -27,6 +27,8 @@ def main():
         screen.fill(BLACK)
         #draws the player
         player.draw(screen)
+        #updates the player
+        player.update(dt)
         #updates display
         pygame.display.flip()
         #updates clock
