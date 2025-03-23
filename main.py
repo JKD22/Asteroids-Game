@@ -5,6 +5,11 @@ from player import *
 def main():
     #initialize pygame
     pygame.init()
+    #CREATE the containers first
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    #THEN set the containers
+    Player.containers = (updatable, drawable)
     #set up the clock
     clock = pygame.time.Clock()
     #set game time to 0
@@ -24,11 +29,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        screen.fill(BLACK)
+        screen.fill(BLACK) 
         #draws the player
-        player.draw(screen)
+        for entity in drawable:
+            entity.draw(screen)
         #updates the player
-        player.update(dt)
+        for entity in updatable:
+            entity.update(dt)
         #updates display
         pygame.display.flip()
         #updates clock
