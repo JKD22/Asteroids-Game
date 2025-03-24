@@ -5,6 +5,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+from shot import *
 
 def main():
     #initialize pygame
@@ -14,11 +15,14 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shot_group = pygame.sprite.Group()
+
     
     #THEN set the containers
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable)
+    Shot.containers = (shot_group, updatable, drawable)
 
     #set up the clock
     clock = pygame.time.Clock()
@@ -50,6 +54,10 @@ def main():
         #updates the player
         for entity in updatable:
             entity.update(dt)
+        for shot in shot_group:
+            shot.update(dt)
+
+        #prints the number of asteroids
         print(f"Number of asteroids: {len(asteroids)}")
         #checks for collisions
         for asteroid in asteroids:
