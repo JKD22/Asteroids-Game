@@ -1,12 +1,10 @@
 import pygame
-import pygame.mixer
 import sys
 
 from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
-from sounds import *
 
 def main():
     #initialize pygame
