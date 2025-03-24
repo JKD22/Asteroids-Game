@@ -8,9 +8,7 @@ from asteroidfield import *
 
 def main():
     #initialize pygame
-    pygame.mixer.pre_init(22050, 16, 2, 2048*4)
     pygame.init()
-    pygame.mixer.init()
 
     #CREATE the containers first
     updatable = pygame.sprite.Group()
@@ -52,7 +50,6 @@ def main():
         #updates the player
         for entity in updatable:
             entity.update(dt)
-
         print(f"Number of asteroids: {len(asteroids)}")
         #checks for collisions
         for asteroid in asteroids:

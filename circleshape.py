@@ -7,15 +7,17 @@ class CircleShape(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         self.radius = radius
+        self.velocity = pygame.Vector2(0, 0)
+        self.radius = radius
         # we will be using this later
         if hasattr(self, "containers"):
             super().__init__(self.containers)
         else:
             super().__init__()
 
-        self.position = pygame.Vector2(x, y)
-        self.velocity = pygame.Vector2(0, 0)
-        self.radius = radius
+    
+    def get_position(self):
+        return pygame.Vector2(self.x, self.y)
 
     def draw(self, screen):
         # sub-classes must override
@@ -31,7 +33,7 @@ class CircleShape(pygame.sprite.Sprite):
     def collision(self, other):
         #get positions
         self_pos = self.position
-        other_pos = other.position
+        other_pos = other.get_position()
 
         distance = self_pos.distance_to(other_pos)
 
@@ -39,6 +41,6 @@ class CircleShape(pygame.sprite.Sprite):
         print(f"Asteroid position: {other_pos}, radius: {other.radius}")
         print(f"Distance: {distance}, Sum of radii: {self.radius + other.radius}")
 
-        if distance < self.radius + other.radius:
+        if distance <= self.radius + other.radius:
             return True
         return False
