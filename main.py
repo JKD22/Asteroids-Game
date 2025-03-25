@@ -54,11 +54,8 @@ def main():
         #updates the player
         for entity in updatable:
             entity.update(dt)
-        for shot in shot_group:
-            shot.update(dt)
 
-        #prints the number of asteroids
-        print(f"Number of asteroids: {len(asteroids)}")
+
         #checks for collisions
         for asteroid in asteroids:
             if player.collision(asteroid):
@@ -72,8 +69,9 @@ def main():
         fps = clock.get_fps()            #set the music time
         
         #PRINTS
-        print(f"FPS: {fps}")
-        print(f"DT: {dt}")
-               
+        #print(f"FPS: {fps}")
+        #print(f"DT: {dt}")
+        #print(f"Number of asteroids: {len(asteroids)}")\
+    
 if __name__ == "__main__":
     main()
