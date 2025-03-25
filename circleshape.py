@@ -1,4 +1,5 @@
 import pygame
+import time
 from constants import *
 
 # Base class for game objects
@@ -33,13 +34,9 @@ class CircleShape(pygame.sprite.Sprite):
     def collision(self, other):
         #get positions
         self_pos = self.position
-        other_pos = other.get_position()
+        other_pos = other.position
 
         distance = self_pos.distance_to(other_pos)
-
-        print(f"Player position: {self_pos}, radius: {self.radius}")
-        print(f"Asteroid position: {other_pos}, radius: {other.radius}")
-        print(f"Distance: {distance}, Sum of radii: {self.radius + other.radius}")
 
         if distance <= self.radius + other.radius:
             return True

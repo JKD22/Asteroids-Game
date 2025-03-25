@@ -62,6 +62,12 @@ def main():
                 print("Game over!")
                 sys.exit()
 
+            for shot in shot_group:
+                if shot.collision(asteroid):
+                    asteroid.split()
+                    shot.kill()
+                    break
+
         #updates display
         pygame.display.flip()
         #updates clock
@@ -69,7 +75,7 @@ def main():
         fps = clock.get_fps()            #set the music time
         
         #PRINTS
-        #print(f"FPS: {fps}")
+        print(f"FPS: {fps}")
         #print(f"DT: {dt}")
         #print(f"Number of asteroids: {len(asteroids)}")\
     
